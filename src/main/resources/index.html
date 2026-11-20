@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Harness Lab Hub</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f5f8fc; color: #17253b; font: 1rem/1.6 system-ui, sans-serif; }
+    main { max-width: 52rem; margin: 0 auto; padding: clamp(2rem, 7vw, 5rem) 1.25rem; }
+    header { display: grid; align-items: center; gap: 1.25rem; padding: 1.5rem;
+             background: #132b48; color: #fff; border-radius: 1rem; }
+    header p { margin: 0; }
+    .canary { display: block; width: 100%; max-width: 18rem; height: auto; justify-self: center; }
+    @media (min-width: 42rem) {
+      header { grid-template-columns: minmax(0, 1fr) minmax(0, .6fr); }
+    }
+    .label { color: #b9e3ff; font-weight: 700; }
+    h1 { margin: .4rem 0 .6rem; font-size: clamp(1.8rem, 5vw, 2.7rem); line-height: 1.15; }
+    h2 { margin: 1.75rem 0 .25rem; }
+    ul { list-style: none; padding: 0; display: grid; gap: .75rem;
+         grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
+    li { padding: .85rem 1rem; background: #fff; border: 1px solid #d4dfea; border-radius: .75rem; }
+    li p { margin: .25rem 0 0; }
+    a { color: #005aa3; font-weight: 700; }
+    a:focus-visible { outline: 2px solid #005aa3; outline-offset: 3px; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <p class="label">Harness · Sales Engineering Lab</p>
+        <h1>Congratulations — you deployed the Harness Lab Hub!</h1>
+        <p>Your Java app is running and serving this page.</p>
+      </div>
+      <img class="canary" src="/canary-hacker.svg" width="320" height="240"
+           alt="The Harness canary in a navy hacker hoodie, peering over a laptop with a green terminal prompt.">
+    </header>
+    <section aria-labelledby="resources">
+      <h2 id="resources">Explore Harness</h2>
+      <p>Start here to learn how developers and platform engineers build, deploy, and govern software with Harness.</p>
+      <ul>
+        <li>
+          <a href="https://developer.harness.io/">Harness Developer Hub</a>
+          <p>Find technical documentation for pipelines, deployments, and platform tools.</p>
+        </li>
+        <li>
+          <a href="https://developer.harness.io/api-reference">API Reference</a>
+          <p>Look up APIs for automation and integrations.</p>
+        </li>
+        <li>
+          <a href="https://developer.harness.io/university">Harness University</a>
+          <p>Explore training on Harness and software delivery.</p>
+        </li>
+        <li>
+          <a href="https://www.harness.io/">Harness</a>
+          <p>Visit the official company and platform website.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

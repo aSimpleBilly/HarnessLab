@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" role="img" aria-labelledby="title description">
+  <title id="title">Harness canary, hacker edition</title>
+  <desc id="description">A yellow canary with a feather crest and a navy hoodie peers over a laptop.</desc>
+  <defs>
+    <radialGradient id="glow" cx="55%" cy="40%" r="66%">
+      <stop stop-color="#1e5b69"/>
+      <stop offset="1" stop-color="#0a2138"/>
+    </radialGradient>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M0 20V0h20" fill="none" stroke="#79d9e9" stroke-opacity=".13"/>
+    </pattern>
+  </defs>
+  <rect width="320" height="240" rx="20" fill="url(#glow)"/>
+  <rect width="320" height="240" rx="20" fill="url(#grid)"/>
+  <g fill="none" stroke="#76e8d3" stroke-width="2" opacity=".6">
+    <path d="M24 57h49l18-18h16m-74 80h43l13-13h8m141-49h16l15-15h22m-36 82h16l16-16h13"/>
+    <circle cx="24" cy="57" r="3" fill="#76e8d3"/>
+    <circle cx="291" cy="42" r="3" fill="#76e8d3"/>
+  </g>
+  <ellipse cx="167" cy="217" rx="132" ry="10" fill="#081a2c" opacity=".8"/>
+
+  <!-- Hoodie and hood lining -->
+  <path d="M104 203c-6-27-3-54 12-72l97-12c28 8 55 28 64 49 7 17 0 33-14 39l-94 10Z" fill="#132d4c" stroke="#437298" stroke-width="3"/>
+  <path d="M103 141c-20-23-17-56-2-78 16-24 44-41 76-42 34-2 61 17 70 43 7 19 1 36 1 54l11 28c-18-12-40-14-59-3l-27 17c-26 14-55 3-70-19Z" fill="#193957" stroke="#437298" stroke-width="3"/>
+  <path d="M117 135c-19-20-16-47-2-67 14-21 36-31 62-31 28 0 48 13 55 34 7 20-2 43 4 62-15-2-27 1-41 10-27 17-61 10-78-8Z" fill="#0b2137"/>
+
+  <!-- Canary crest, cheeks, and beak -->
+  <path d="M125 76c7-8 11-12 17-16-13 3-24-1-23-8 1-6 11-9 22-6-12-5-16-11-12-16 5-6 17-1 26 7-5-9-1-15 6-15 9 0 14 10 18 18 25 5 43 23 45 48 3 27-13 53-36 61-25 9-53-1-64-24-8-17-8-34 1-49Z" fill="#ffd44f"/>
+  <path d="M179 40c25 5 43 23 45 48 3 27-13 53-36 61-11 4-23 4-34 1 25-1 46-20 51-44 5-25-6-53-26-66Z" fill="#edaa31"/>
+  <path d="M121 89h30c1 12-6 20-15 20-10 0-16-8-15-20Zm41 4h33c0 13-7 21-17 21-10 0-16-8-16-21Z" fill="#fff9df"/>
+  <path d="M127 90h12v4a6 6 0 0 1-12 0Zm43 4h13v4a6.5 6.5 0 0 1-13 0Z" fill="#121f33"/>
+  <path d="m119 84 31 4m14 3 32-3" fill="none" stroke="#a75a36" stroke-width="6" stroke-linecap="round"/>
+  <path d="m123 121 26-14 17 15-20 16Z" fill="#e26a25"/>
+  <path d="m123 121 26-14 17 15-24 3Z" fill="#fb912c"/>
+
+  <!-- Folds, drawstrings, and the canary's blue emblem -->
+  <path d="M104 140c18 19 54 22 74 15 20-8 35-20 60-18-21 5-32 18-52 29-27 14-61 6-82-9Z" fill="#244968"/>
+  <path d="M145 163v16m30-10 7 14m52-27c17 5 29 17 35 30" fill="none" stroke="#6895b2" stroke-width="3" stroke-linecap="round"/>
+  <g transform="translate(233 181) rotate(42)" fill="none" stroke="#20c4ee" stroke-width="4" stroke-linecap="round">
+    <rect x="-10" y="-10" width="20" height="20" rx="6"/>
+    <path d="M-8 0H8M0-8v16"/>
+  </g>
+  <path d="M230 199c-7-2-13-1-21 2l-12 4c-5 2-4 6 2 6 8 0 19 0 26-1 8-1 11-9 5-11Z" fill="#ffd44f"/>
+
+  <!-- Laptop lid with a terminal prompt -->
+  <path d="M45 145h127a7 7 0 0 1 7 5l18 57H63a7 7 0 0 1-7-5l-18-48a7 7 0 0 1 7-9Z" fill="#1a4160" stroke="#70a8c6" stroke-width="3"/>
+  <path d="M40 153h137l16 49H63a4 4 0 0 1-4-3Z" fill="#0e2941"/>
+  <path d="m97 167 15 10-10 9m18 0h14" fill="none" stroke="#76e8d3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M61 207h165l-13 9H72a11 11 0 0 1-11-9Z" fill="#6c9db8"/>
+</svg>
