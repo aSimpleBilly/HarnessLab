@@ -5,33 +5,50 @@ import com.sun.net.httpserver.HttpServer;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.InetSocketAddress;
+import java.net.URI;
 import java.nio.charset.StandardCharsets;
 
 public final class HarnessLabHub {
     private static final String HTML = "text/html; charset=utf-8";
     private static final String TEXT = "text/plain; charset=utf-8";
+    private static final String PORT_ERROR = "PORT must be an integer between 1 and 65535.";
     private static final byte[] HEALTHY = "ok\n".getBytes(StandardCharsets.UTF_8);
     private static final byte[] NOT_FOUND = "Not found\n".getBytes(StandardCharsets.UTF_8);
     private static final byte[] METHOD_NOT_ALLOWED = "Method not allowed\n".getBytes(StandardCharsets.UTF_8);
 
+    enum Route { HOME, CANARY, HEALTH, NOT_FOUND, METHOD_NOT_ALLOWED }
+
     private HarnessLabHub() {}
 
     public static void main(String[] args) throws IOException {
-        String value = System.getenv().getOrDefault("PORT", "8080");
         int port;
         try {
-            port = Integer.parseInt(value);
-            if (port < 1 || port > 65535) {
-                throw new NumberFormatException();
-            }
-        } catch (NumberFormatException e) {
-            System.err.println("PORT must be an integer between 1 and 65535.");
+            port = parsePort(System.getenv("PORT"));
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
             System.exit(1);
             return;
         }
 
         HttpServer server = start(new InetSocketAddress(port));
         System.out.println("Harness Lab Hub listening on port " + server.getAddress().getPort());
+    }
+
+    static int parsePort(String value) {
+        if (value == null) {
+            return 8080;
+        }
+
+        int port;
+        try {
+            port = Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(PORT_ERROR, e);
+        }
+        if (port < 1 || port > 65535) {
+            throw new IllegalArgumentException(PORT_ERROR);
+        }
+        return port;
     }
 
     static HttpServer start(InetSocketAddress address) throws IOException {
@@ -53,20 +70,29 @@ public final class HarnessLabHub {
         }
     }
 
+    static Route route(String method, URI target) {
+        if (!method.equals("GET") && !method.equals("HEAD")) {
+            return Route.METHOD_NOT_ALLOWED;
+        }
+        return switch (target.getRawPath()) {
+            case "/" -> Route.HOME;
+            case "/canary-hacker.svg" -> Route.CANARY;
+            case "/healthz" -> Route.HEALTH;
+            default -> Route.NOT_FOUND;
+        };
+    }
+
     private static void handle(HttpExchange exchange, byte[] page, byte[] canary) throws IOException {
         try (exchange) {
-            String method = exchange.getRequestMethod();
-            if (!method.equals("GET") && !method.equals("HEAD")) {
-                exchange.getResponseHeaders().set("Allow", "GET, HEAD");
-                send(exchange, 405, TEXT, METHOD_NOT_ALLOWED);
-                return;
-            }
-
-            switch (exchange.getRequestURI().getRawPath()) {
-                case "/" -> send(exchange, 200, HTML, page);
-                case "/canary-hacker.svg" -> send(exchange, 200, "image/svg+xml", canary);
-                case "/healthz" -> send(exchange, 200, TEXT, HEALTHY);
-                default -> send(exchange, 404, TEXT, NOT_FOUND);
+            switch (route(exchange.getRequestMethod(), exchange.getRequestURI())) {
+                case HOME -> send(exchange, 200, HTML, page);
+                case CANARY -> send(exchange, 200, "image/svg+xml", canary);
+                case HEALTH -> send(exchange, 200, TEXT, HEALTHY);
+                case NOT_FOUND -> send(exchange, 404, TEXT, NOT_FOUND);
+                case METHOD_NOT_ALLOWED -> {
+                    exchange.getResponseHeaders().set("Allow", "GET, HEAD");
+                    send(exchange, 405, TEXT, METHOD_NOT_ALLOWED);
+                }
             }
         }
     }

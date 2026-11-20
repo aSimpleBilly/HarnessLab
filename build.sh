@@ -15,6 +15,7 @@ jar --create --file build/harness-lab-hub.jar --main-class lab.HarnessLabHub \
 if [ "${1:-build}" = test ]; then
     mkdir -p build/test-classes
     javac --release 21 -cp build/harness-lab-hub.jar -d build/test-classes \
-        src/test/java/lab/HarnessLabHubTest.java
+        src/test/java/lab/HarnessLabHubUnitTest.java src/test/java/lab/HarnessLabHubTest.java
+    java -cp build/harness-lab-hub.jar:build/test-classes lab.HarnessLabHubUnitTest
     java -cp build/harness-lab-hub.jar:build/test-classes lab.HarnessLabHubTest
 fi

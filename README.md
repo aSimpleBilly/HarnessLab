@@ -17,7 +17,7 @@ No Dockerfile, Harness pipeline, or Kubernetes manifests are included.
 Use a Java 21 JDK and a POSIX shell. The app needs no database, credentials, or external dependencies.
 
 - Build: `sh build.sh`
-- Build and run the smoke tests: `sh build.sh test`
+- Build and run the unit and HTTP smoke tests: `sh build.sh test`
 - Start: `java -jar build/harness-lab-hub.jar`
 
 The landing page is at [localhost:8080](http://localhost:8080/). `GET /healthz` returns HTTP 200 with `ok`. Set `PORT` to change the default port.
